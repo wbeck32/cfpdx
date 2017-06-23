@@ -1,0 +1,17 @@
+{
+  "name": "cfpdx",
+  "version": "1.0.0",
+  "description": "CodeFellowsPDX 401 application test",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "cfpdx"
+  },
+  "author": "Wendy Beck",
+  "license": "ISC"
+}
