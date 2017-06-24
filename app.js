@@ -1,13 +1,13 @@
 // app.js
 
 // modules =================================================
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var http = require('http');
-var apiKey = require('./data/apiKey.js');
-var key = apiKey.key;
+var apiKey = require('./data/keys.js');
+var bdbKey = apiKey.bdbKey;
 
 // configuration ===========================================
 // set our port
@@ -27,15 +27,24 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public/views');
 
 var homeURL = 'http://api.brewerydb.com/v2/';
+
 // routes ==================================================
-app.get('/beer/:beerId', function (req, res) {
-  var beerId = req.params.beerId;
-  var URL = homeURL + 'beer/' + beerId + '/?key=' + key;
+app.get('/locations', function (req, res) {
+  var URL = homeURL + 'locations/?key=' + bdbKey;
   http.get(URL, function (response) {
     res.set('format', 'json');
     response.pipe(res);
   });
-}); // configure our routes
+});
+
+app.get('/beer/:beerId', function (req, res) {
+  var beerId = req.params.beerId;
+  var URL = homeURL + 'beer/' + beerId + '/?key=' + bdbKey;
+  http.get(URL, function (response) {
+    res.set('format', 'json');
+    response.pipe(res);
+  });
+});
 
 app.listen(port);
 console.log('Magic happens on port ' + port);

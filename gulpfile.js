@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-  // sass = require('gulp-sass'),
+    sass = require('gulp-sass'),
   // minifycss = require('gulp-clean-css'),
   // uglify = require('gulp-uglify'),
   livereload = require('gulp-livereload');
@@ -15,16 +15,16 @@ gulp.task('default', function() {
 });
 
 //TODO: autoprefixer isn't working correctly
-// gulp.task('sass', function () {
-//   return gulp.src('build/scss/*.scss')
-//     .pipe(sourcemaps.init())
-//     .pipe(sass())
-//     .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
-//     .pipe(sourcemaps.write())
-//     .pipe(minifycss())
-//     .pipe(gulp.dest('public/css'))
-//     .pipe(livereload());
-// });
+gulp.task('sass', function () {
+  return gulp.src('build/scss/*.scss')
+    // .pipe(sourcemaps.init())
+    .pipe(sass())
+    // .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+    // .pipe(sourcemaps.write())
+    // .pipe(minifycss())
+    .pipe(gulp.dest('public/css'))
+    .pipe(livereload());
+});
 
 gulp.task('start',function(){
   livereload.listen();
