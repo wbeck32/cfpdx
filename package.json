@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "description": "CodeFellowsPDX 401 application test",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "http": "0.0.0",
+    "method-override": "^2.3.9",
+    "moment": "^2.18.1",
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "cfpdx"
+    "url": "https://github.com/wbeck32/cfpdx.git"
   },
   "author": "Wendy Beck",
   "license": "ISC"
