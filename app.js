@@ -6,8 +6,11 @@ var app = express();
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var http = require('http');
+var https = require('https');
 var apiKey = require('./data/keys.js');
 var bdbKey = apiKey.bdbKey;
+var googleKey = apiKey.googleKey;
+var fetch = require('node-fetch');
 
 // configuration ===========================================
 // set our port
@@ -26,24 +29,49 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public/views');
 
+
+
+
 var homeURL = 'http://api.brewerydb.com/v2/';
 
 // routes ==================================================
 app.get('/locations', function (req, res) {
   var URL = homeURL + 'locations/?key=' + bdbKey;
-  http.get(URL, function (response) {
-    res.set('format', 'json');
-    response.pipe(res);
-  });
+  fetch(URL)
+    .then((resp) => resp.json())
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+ });
+});
+
+app.get('/findNearBeer/:lat/:lng', function (req, res) {
+  var lat = req.params.lat;
+  var lng = req.params.lng;
+  var URL = homeURL + 'search/geo/point/?lat='+lat+'&lng='+lng+'&radius=2&format=json&key='+bdbKey;
+  fetch(URL)
+    .then((resp) => resp.json())
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+ });
 });
 
 app.get('/beer/:beerId', function (req, res) {
   var beerId = req.params.beerId;
   var URL = homeURL + 'beer/' + beerId + '/?key=' + bdbKey;
-  http.get(URL, function (response) {
-    res.set('format', 'json');
-    response.pipe(res);
-  });
+  fetch(URL)
+    .then((resp) => resp.json())
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+ });
 });
 
 app.listen(port);
