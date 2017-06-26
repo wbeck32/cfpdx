@@ -1,4 +1,13 @@
-#map {
-  height: 70vh;
+.wrapper .leftCol {
+  border: 1px solid red;
+  width: 25vw;
+  float: left; }
+
+.wrapper .rightCol {
+  border: 1px solid blue;
   width: 70vw;
-  margin: 30vh 0 0 30vw; }
+  float: right; }
+  .wrapper .rightCol #map {
+    height: 70vh;
+    width: 70vw;
+    margin: 10vh 0 0 0; }

@@ -5,13 +5,23 @@
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-    <a href="/beer/cBLTUw">Clicky</a>
-    <div id="beerData"></div>
-    <a href="/findNearBeer/45.5231/-122.6765">Find Near Beer</a>
-    <a href="/locations">Locations</a>
-    <div id="map"></div>
+<div class="wrapper">
+  <div class="leftCol">
+<div id="findByID">Clicky</div>
+  <div id="findNearBeer">Find Near Beer</div>
+  <div id="findLocations">Locations</div>
 
-  <script type="text/javascript" src="js/maps.js"></script>
+  <ul id="beerData"></ul>
+</div>
+<div class="rightCol">
+    <div id="map"></div>
+</div>
+</div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/main.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk&callback=initMap">
         </script>

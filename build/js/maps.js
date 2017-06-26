@@ -2,15 +2,13 @@
  // prompted by your browser. If you see the error "The Geolocation service
  // failed.", it means you probably did not give permission for the browser to
  // locate you.
-
-
- var map, infoWindow;
+var map, infoWindow;
  function initMap() {
    map = new google.maps.Map(document.getElementById('map'), {
      center: {lat: 45.5231, lng: -122.6765},
      zoom: 12
    });
-   infoWindow = new google.maps.InfoWindow;
+   infoWindow = new google.maps.InfoWindow();
 
    // Try HTML5 geolocation.
    if (navigator.geolocation) {
@@ -20,6 +18,11 @@
          lng: position.coords.longitude
        };
        map.setCenter(pos);
+
+        $('div#findNearBeer').attr({
+          lat : pos.lat,
+          lng : pos.lng
+        });
      }, function() {
        handleLocationError(true, infoWindow, map.getCenter());
      });

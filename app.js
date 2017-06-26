@@ -67,6 +67,7 @@ app.get('/beer/:beerId', function (req, res) {
   fetch(URL)
     .then((resp) => resp.json())
     .then(function(resp) {
+      // res.redirect('/');
       res.send(resp);
     })
     .catch((error) => {
