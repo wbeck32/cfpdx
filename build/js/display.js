@@ -8,6 +8,7 @@ $('div#findByID').click(function(){
         $.each(stuff, function(index, value){
           $('<li/>')
             .addClass('beerInfo')
+            .attr('id',val.id)
             .text(stuff[index])
             .appendTo('ul#beerData');
         });
@@ -25,9 +26,12 @@ $('div#findNearBeer').click(function(){
     $.each( data, function( key, val ) {
         if(key === 'data') {
         $.each(val, function(index, value){
+          console.log(val[index]);
           $('<li/>')
               .addClass('beerInfo')
-              .text(val[index].brewery.id)
+              .attr('id',val[index].brewery.id)
+              .text(val[index].brewery.name)
+              .append('<br>'+val[index].streetAddress)
               .appendTo('ul#beerData');
         });
         }

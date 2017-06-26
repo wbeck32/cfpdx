@@ -1,13 +1,15 @@
 .wrapper .leftCol {
   border: 1px solid red;
-  width: 25vw;
+  width: 50vw;
   float: left; }
 
 .wrapper .rightCol {
   border: 1px solid blue;
-  width: 70vw;
+  width: 45vw;
   float: right; }
   .wrapper .rightCol #map {
-    height: 70vh;
-    width: 70vw;
-    margin: 10vh 0 0 0; }
+    height: 10vh;
+    width: 10vw;
+    margin: 20vh 0 0 0; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3R5bGUuY3NzIiwic291cmNlcyI6WyJzdHlsZS5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi53cmFwcGVyIHtcblxuICAubGVmdENvbHtcbiAgYm9yZGVyOiAxcHggc29saWQgcmVkO1xuICB3aWR0aDogNTB2dztcbiAgZmxvYXQ6IGxlZnQ7XG59XG5cbi5yaWdodENvbCB7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsdWU7XG4gIHdpZHRoOiA0NXZ3O1xuICBmbG9hdDogcmlnaHQ7XG4gICNtYXAge1xuICAgIGhlaWdodDogMTB2aDtcbiAgICB3aWR0aDogMTB2dztcbiAgICBtYXJnaW46IDIwdmggMCAwIDA7XG4gIH1cblxuXG59XG5cblxufVxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLEFBRUUsUUFGTSxDQUVOLFFBQVEsQ0FBQTtFQUNSLE1BQU0sRUFBRSxhQUFhO0VBQ3JCLEtBQUssRUFBRSxJQUFJO0VBQ1gsS0FBSyxFQUFFLElBQUksR0FDWjs7QUFORCxBQVFBLFFBUlEsQ0FRUixTQUFTLENBQUM7RUFDUixNQUFNLEVBQUUsY0FBYztFQUN0QixLQUFLLEVBQUUsSUFBSTtFQUNYLEtBQUssRUFBRSxLQUFLLEdBUWI7RUFuQkQsQUFZRSxRQVpNLENBUVIsU0FBUyxDQUlQLElBQUksQ0FBQztJQUNILE1BQU0sRUFBRSxJQUFJO0lBQ1osS0FBSyxFQUFFLElBQUk7SUFDWCxNQUFNLEVBQUUsVUFBVSxHQUNuQiJ9 */

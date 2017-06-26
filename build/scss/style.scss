@@ -2,18 +2,18 @@
 
   .leftCol{
   border: 1px solid red;
-  width: 25vw;
+  width: 50vw;
   float: left;
 }
 
 .rightCol {
   border: 1px solid blue;
-  width: 70vw;
+  width: 45vw;
   float: right;
   #map {
-    height: 70vh;
-    width: 70vw;
-    margin: 10vh 0 0 0;
+    height: 10vh;
+    width: 10vw;
+    margin: 20vh 0 0 0;
   }
 
 

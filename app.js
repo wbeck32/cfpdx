@@ -75,5 +75,16 @@ app.get('/beer/:beerId', function (req, res) {
  });
 });
 
+// http://api.brewerydb.com/v2/beer/cBLTUw/breweries?key=72554fc6abe37b0e49de09124c862a5a
+// Shows which brewery a specific beer is from
+
+// http://api.brewerydb.com/v2/beers?key=72554fc6abe37b0e49de09124c862a5a&withBreweries=Y
+// Shows which brewery a specific beer is from
+
+// /brewery/:breweryId
+
+// http://api.brewerydb.com/v2/brewery/i9M3Mb/beers?key=72554fc6abe37b0e49de09124c862a5a
+
+
 app.listen(port);
 console.log('Magic happens on port ' + port);
