@@ -1,4 +1,5 @@
 function getBeerInfo (beerId) {
+$('.breweryBeers').remove();
   $.getJSON( "/beer/"+beerId, function( data ) {
     $.each( data, function( key, val ) {
       if(key === 'data') {
@@ -24,13 +25,20 @@ $('div#findNearBeer').click(function(){
   $.getJSON( "/findNearBeer/"+lat+"/"+lng, function( data ) {
     $.each( data, function( key, val ) {
         if(key === 'data') {
+        var icon;
         for (var m = 0; m < 10; m++) {
+          if(val[m].brewery.images !== undefined) {
+            icon = val[m].brewery.images.icon;
+          } else {
+            icon = '../images/beer.png';
+          }
           $('<li/>')
-              .addClass('beerInfo')
+              .addClass('beerInfo').bind('click', function(){$('.breweryBeers').remove();})
               .attr('id',val[m].brewery.id)
-              .html('<div class="breweryName">'+val[m].brewery.name+'</div>')
+              .append('<span class="icon"><img src="'+icon+'"></span>')
+              .append('<span><div class="breweryName">'+val[m].brewery.name+'</div>')
               .append('<div class="breweryAddress">'+val[m].streetAddress+'</div>')
-              .append('<div class="breweryPhone">'+val[m].phone+'</div>')
+              .append('<div class="breweryPhone">'+val[m].phone+'</div></span>')
               .appendTo('ul#beerData');
           }
         }
@@ -40,7 +48,6 @@ $('div#findNearBeer').click(function(){
 
 $('ul#beerData').on('click', 'li', function(event){
     var breweryId = $(this).attr('id');
-    // $('.breweryBeers').remove();
     $.getJSON( "/brewery/"+breweryId+"/beers", function( data ) {
       if(data.data) {
         var listDiv = $( "<div class='breweryBeers'></div>")

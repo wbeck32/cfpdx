@@ -4,18 +4,49 @@
     list-style-type: none;
   }
 
-  .leftCol{
-  border: 1px solid red;
-  width: 98%;
-  float: none;
-  margin: 0 auto;
+  .leftCol {
+    width: 98%;
+    float: none;
+    margin: 0 auto;
 
-    .breweryBeers {
-      margin-left: 20vw;
+    #findNearBeer {
+
+
     }
+
+  ul#beerData {
+
+    li.beerInfo {
+      margin-top: 20px;
+      .icon img {
+        max-width: 40px;
+        max-height: 40px;
+        vertical-align: bottom;
+        margin-right: 10px;
+        float: left;
+      }
+
+      .breweryName {
+
+      }
+      .breweryAddress {
+
+
+      }
+
+      .breweryPhone {
+
+
+      }
+      .breweryBeers {
+        margin-left: 20vw;
+      }
+    }
+  }
 }
 
 .rightCol {
+  display: none;
   // border: 1px solid blue;
   width: 0;
   float: right;
