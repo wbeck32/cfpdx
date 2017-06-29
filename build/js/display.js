@@ -3,8 +3,7 @@ $('.breweryBeers').remove();
   $.getJSON( "/beer/"+beerId, function( data ) {
     $.each( data, function( key, val ) {
       if(key === 'data') {
-        console.log(key);
-        console.log(val.id);
+        console.log(val);
         // $.each(stuff, function(index, value){
         //   $('<li/>')
         //     .addClass('beerInfo')
@@ -33,7 +32,7 @@ $('div#findNearBeer').click(function(){
             icon = '../images/beer.png';
           }
           $('<li/>')
-              .addClass('beerInfo').bind('click', function(){$('.breweryBeers').remove();})
+              // .addClass('beerInfo').bind('click', function(){$('.breweryBeers').remove();})
               .attr('id',val[m].brewery.id)
               .append('<span class="icon"><img src="'+icon+'"></span>')
               .append('<span><div class="breweryName">'+val[m].brewery.name+'</div>')

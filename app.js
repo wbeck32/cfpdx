@@ -59,7 +59,7 @@ app.get('/brewery/:breweryId/beers', function (req, res) {
 app.get('/findNearBeer/:lat/:lng', function (req, res) {
   var lat = req.params.lat;
   var lng = req.params.lng;
-  var URL = homeURL + 'search/geo/point/?lat='+lat+'&lng='+lng+'&radius=2&format=json&key='+bdbKey;
+  var URL = homeURL + 'search/geo/point/?lat='+lat+'&lng='+lng+'&format=json&key='+bdbKey;
   fetch(URL)
     .then((resp) => resp.json())
     .then(function(resp) {

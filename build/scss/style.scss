@@ -1,5 +1,38 @@
 .wrapper {
 
+  #loader {
+    opacity: 1;
+    background-color: pink;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &.locationFound {
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition: opacity 1s ease-in-out;
+      -ms-transition: opacity 1s ease-in-out;
+      -o-transition: opacity 1s ease-in-out;
+       opacity: 0;
+    }
+
+  p {
+    text-align: center;
+    margin-top: 10vh;
+
+    img {
+      margin: 0 16px;
+      -webkit-animation: rotation 2s infinite linear;
+      @-webkit-keyframes rotation {
+        from {-webkit-transform: rotate(0deg);}
+        to   {-webkit-transform: rotate(359deg);}
+      }
+    }
+  }
+}
+
   ul {
     list-style-type: none;
   }

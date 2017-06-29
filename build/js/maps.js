@@ -1,11 +1,4 @@
-var map, infoWindow;
- function initMap() {
-  //  map = new google.maps.Map(document.getElementById('map'), {
-  //    center: {lat: 45.5231, lng: -122.6765},
-  //    zoom: 10
-  //  });
-  //  infoWindow = new google.maps.InfoWindow();
-
+function findMe() {
    // Try HTML5 geolocation.
    if (navigator.geolocation) {
      navigator.geolocation.getCurrentPosition(function(position) {
@@ -13,14 +6,21 @@ var map, infoWindow;
          lat: position.coords.latitude,
          lng: position.coords.longitude
        };
-       $('div#findNearBeer').attr({
-         lat : pos.lat,
-         lng : pos.lng
-       });
-      // Is it quicker to get a street address or a latlng?
-      // find address
-      // https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng&key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk
-      //  map.setCenter(pos);
+       fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk')
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          var address = data.results[0].formatted_address;
+             $('div#findNearBeer').attr({
+               lat : pos.lat,
+               lng : pos.lng
+             });
+              $('div#loader').addClass('locationFound');
+              $('div.leftCol').css('visibility', 'visible');
+              $('div.yourLocation').html('I found you near '+address);
+         })
+         .catch(function(error) {
+           console.log(error);
+      });
      }, function() {
        handleLocationError(true, infoWindow, map.getCenter());
      });
@@ -37,14 +37,3 @@ var map, infoWindow;
                          'Error: Your browser doesn\'t support geolocation.');
    infoWindow.open(map);
  }
-
-function addMarker(lat, lng) {
-  console.log(lat, lng);
-  var marker = new google.maps.Marker({
-    lat: lat,
-    lng: lng,
-    map: map
-  });
-
-
-}
