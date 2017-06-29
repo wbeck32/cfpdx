@@ -1,6 +1,4 @@
 // app.js
-
-// modules =================================================
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -29,14 +27,11 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public/views');
 
-
-
-
 var homeURL = 'http://api.brewerydb.com/v2/';
-
 // routes ==================================================
-app.get('/locations', function (req, res) {
-  var URL = homeURL + 'locations/?key=' + bdbKey;
+app.get('/brewery/:breweryId', function (req, res) {
+  var breweryId = req.params.breweryId;
+  var URL = homeURL + 'brewery/'+breweryId+'/?key=' + bdbKey;
   fetch(URL)
     .then((resp) => resp.json())
     .then(function(resp) {
@@ -47,9 +42,8 @@ app.get('/locations', function (req, res) {
  });
 });
 
-app.get('/breweryBeers/:breweryId/beers', function (req, res) {
-  var breweryId = req.params;
-  console.log(breweryId);
+app.get('/brewery/:breweryId/beers', function (req, res) {
+  var breweryId = req.params.breweryId;
   var URL = homeURL + 'brewery/'+breweryId+'/beers?key='+bdbKey;
   fetch(URL)
     .then((resp) => resp.json())
@@ -82,7 +76,6 @@ app.get('/beer/:beerId', function (req, res) {
   fetch(URL)
     .then((resp) => resp.json())
     .then(function(resp) {
-      // res.redirect('/');
       res.send(resp);
     })
     .catch((error) => {

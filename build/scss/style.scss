@@ -1,18 +1,27 @@
 .wrapper {
 
+  ul {
+    list-style-type: none;
+  }
+
   .leftCol{
   border: 1px solid red;
-  width: 50vw;
-  float: left;
+  width: 98%;
+  float: none;
+  margin: 0 auto;
+
+    .breweryBeers {
+      margin-left: 20vw;
+    }
 }
 
 .rightCol {
-  border: 1px solid blue;
-  width: 45vw;
+  // border: 1px solid blue;
+  width: 0;
   float: right;
   #map {
-    height: 10vh;
-    width: 10vw;
+    height: 44vh;
+    width: 44vw;
     margin: 20vh 0 0 0;
   }
 

@@ -2,7 +2,7 @@ var map, infoWindow;
  function initMap() {
   //  map = new google.maps.Map(document.getElementById('map'), {
   //    center: {lat: 45.5231, lng: -122.6765},
-  //    zoom: 14
+  //    zoom: 10
   //  });
   //  infoWindow = new google.maps.InfoWindow();
 
@@ -37,3 +37,14 @@ var map, infoWindow;
                          'Error: Your browser doesn\'t support geolocation.');
    infoWindow.open(map);
  }
+
+function addMarker(lat, lng) {
+  console.log(lat, lng);
+  var marker = new google.maps.Marker({
+    lat: lat,
+    lng: lng,
+    map: map
+  });
+
+
+}
