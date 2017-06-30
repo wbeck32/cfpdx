@@ -1,26 +1,20 @@
-function getBeerInfo (beerId) {
-$('.breweryBeers').remove();
+function getBeerInfo (beerId, breweryId) {
   $.getJSON( "/beer/"+beerId, function( data ) {
     $.each( data, function( key, val ) {
       if(key === 'data') {
-        console.log(val);
-        // $.each(stuff, function(index, value){
-        //   $('<li/>')
-        //     .addClass('beerInfo')
-        //     .attr('id',val.id)
-        //     .text(stuff[index])
-        //     .appendTo('.findById');
-        // });
-      }
+          console.log(val);
+          $('<div class="beerInfo"/>')
+            .attr('id',val.id)
+            .appendTo('.findById');
+        }
+      });
     });
-  });
-}
+  }
 
 
 $('div#findNearBeer').click(function(){
-  var lat = $('div#findNearBeer').attr('lat');
-  var lng = $('div#findNearBeer').attr('lng');
-  $('li.beerInfo').remove();
+  var lat = $('div.wrapper').attr('lat');
+  var lng = $('div.wrapper').attr('lng');
   $.getJSON( "/findNearBeer/"+lat+"/"+lng, function( data ) {
     $.each( data, function( key, val ) {
         if(key === 'data') {
@@ -31,40 +25,47 @@ $('div#findNearBeer').click(function(){
           } else {
             icon = '../images/beer.png';
           }
-          $('<li/>')
-              // .addClass('beerInfo').bind('click', function(){$('.breweryBeers').remove();})
+          $('<div/>')
               .attr('id',val[m].brewery.id)
+              .addClass('breweryItem')
               .append('<span class="icon"><img src="'+icon+'"></span>')
               .append('<span><div class="breweryName">'+val[m].brewery.name+'</div>')
               .append('<div class="breweryAddress">'+val[m].streetAddress+'</div>')
               .append('<div class="breweryPhone">'+val[m].phone+'</div></span>')
-              .appendTo('ul#beerData');
+              .appendTo('div#beerData');
           }
         }
     });
   });
 });
 
-$('ul#beerData').on('click', 'li', function(event){
-    var breweryId = $(this).attr('id');
+$('div#beerData').on('click', '.breweryItem', function(){
+  var breweryId = $(this).attr('id');
+  console.log(breweryId);
+  $('div.breweryBeers').not('.breweryItem div#'+breweryId).remove();
+    var lat = $('div.wrapper').attr('lat');
+    var lng = $('div.wrapper').attr('lng');
+    var myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(lng));
+    marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map
+    });
+    marker.setMap(map);
     $.getJSON( "/brewery/"+breweryId+"/beers", function( data ) {
       if(data.data) {
         var listDiv = $( "<div class='breweryBeers'></div>")
-            .appendTo('li#'+breweryId);
+            .appendTo('div#'+breweryId);
         $.each(data.data, function(key, value){
-        var beersDiv = $('<div/>')
-            .attr('id', data.data[key].id)
-            .appendTo(listDiv);
-        $('<span class="findById"/>')
+        $('<div class="findById" id="'+data.data[key].id+'"/>')
             .html('<span class="displayName">'+data.data[key].nameDisplay+'</span>')
             .append('<span class="abv">'+data.data[key].abv+'</span>')
-            .click(function(){getBeerInfo(data.data[key].id);})
-            .appendTo(beersDiv);
+            .click(function(){getBeerInfo(data.data[key].id, breweryId);})
+            .appendTo(listDiv);
           });
         } else {
           $('<div class="breweryBeers"></div>')
               .html('<div>Sorry, no beer data available for this brewery.</div>')
-              .appendTo('li#'+breweryId);
+              .appendTo('div#'+breweryId);
         }
     });
 });

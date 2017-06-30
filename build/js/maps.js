@@ -1,3 +1,4 @@
+var map, marker, infoWindow;
 function findMe() {
    // Try HTML5 geolocation.
    if (navigator.geolocation) {
@@ -9,14 +10,22 @@ function findMe() {
        fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk')
         .then(function(response) { return response.json(); })
         .then(function(data) {
-          var address = data.results[0].formatted_address;
-             $('div#findNearBeer').attr({
+             $('div.wrapper').attr({
                lat : pos.lat,
                lng : pos.lng
              });
               $('div#loader').addClass('locationFound');
-              $('div.leftCol').css('visibility', 'visible');
-              $('div.yourLocation').html('I found you near '+address);
+              $('div#loader').remove();
+              $('div.display').css('visibility', 'visible');
+              var center = {'lat': pos.lat, 'lng': pos.lng};
+               map = new google.maps.Map(document.getElementById('map'), {
+                  center: center,
+                  zoom: 15
+                });
+                marker = new google.maps.Marker({
+                  position: center,
+                  map: map
+                });
          })
          .catch(function(error) {
            console.log(error);

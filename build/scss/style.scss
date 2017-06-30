@@ -1,22 +1,17 @@
-.wrapper {
+html {
+  font-size: 100%;
+  font-family: 'Lato', sans-serif;
 
-  #loader {
-    opacity: 1;
-    background-color: pink;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 10px 0;
+    font-family: 'Playball', cursive;
 
-    &.locationFound {
-      -webkit-transition: opacity 1s ease-in-out;
-      -moz-transition: opacity 1s ease-in-out;
-      -ms-transition: opacity 1s ease-in-out;
-      -o-transition: opacity 1s ease-in-out;
-       opacity: 0;
-    }
+  }
+  ul {
+    list-style-type: none;
+  }
 
   p {
     text-align: center;
@@ -31,25 +26,53 @@
       }
     }
   }
+
+.wrapper {
+
+  #loader {
+    opacity: 1;
+    background-color: pink;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &.locationFound {
+      -webkit-transition: opacity 2s ease-in-out;
+      -moz-transition: opacity 2s ease-in-out;
+      -ms-transition: opacity 2s ease-in-out;
+      -o-transition: opacity 2s ease-in-out;
+       opacity: 0;
+    }
 }
-
-  ul {
-    list-style-type: none;
-  }
-
-  .leftCol {
-    width: 98%;
+  .display {
+    width: 100%;
     float: none;
     margin: 0 auto;
 
-    #findNearBeer {
-
-
+    .yourLocation {
+      text-align: left;
+      font-size: .75rem;
+      margin: 10px;
+      width: 30vw;
     }
 
-  ul#beerData {
+#map {
+  width: 35vw;
+  height: 35vh;
+  float: right;
+  margin: 10;
+}
 
-    li.beerInfo {
+    #findNearBeer {
+    width: 60vw;
+    }
+
+  div#beerData {
+
+    div.breweryItem {
       margin-top: 20px;
       .icon img {
         max-width: 40px;
@@ -73,24 +96,23 @@
       }
       .breweryBeers {
         margin-left: 20vw;
+        .findById {
+
+          .displayName {
+
+          }
+          .abv {
+
+          }
+          .beerInfo {
+          margin-left: 40vw;
+          border: 1px solid red;
+          }
+
+      }
       }
     }
   }
 }
-
-.rightCol {
-  display: none;
-  // border: 1px solid blue;
-  width: 0;
-  float: right;
-  #map {
-    height: 44vh;
-    width: 44vw;
-    margin: 20vh 0 0 0;
-  }
-
-
 }
-
-
 }
