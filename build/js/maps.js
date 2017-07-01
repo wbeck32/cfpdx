@@ -10,13 +10,13 @@ function findMe() {
        fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk')
         .then(function(response) { return response.json(); })
         .then(function(data) {
-             $('div.wrapper').attr({
+             $('.wrapper').attr({
                lat : pos.lat,
                lng : pos.lng
              });
-              $('div#loader').addClass('locationFound');
-              $('div#loader').remove();
-              $('div.display').css('visibility', 'visible');
+              $('.loader').addClass('locationFound');
+              $('.loader').remove();
+              $('.display').css('visibility', 'visible');
               var center = {'lat': pos.lat, 'lng': pos.lng};
                map = new google.maps.Map(document.getElementById('map'), {
                   center: center,

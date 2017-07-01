@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>Testing</title>
+  <link rel="icon" href="../images/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Lato|Playball" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 <div class="wrapper">
 
-  <div id="loader">
+  <div class="loader">
     <h1>Beer Seeker</h1>
     <p><img src="../images/beer.png"><img src="../images/beer.png"><img src="../images/beer.png"></p>
     <p>Please wait while I find you.</p>
@@ -16,12 +17,12 @@
   </div>
 
 <div class="display" style="visibility:hidden">
-  <h1>Beer Seeker</h1>
-  <span class="yourLocation"></span>
-  <span id="map"></span>
-  <div id="findNearBeer">Find the ten closest breweries.</div>
-  <div id="beerData"></div>
-  <div id="beersAtBrewery"></div>
+    <h1>Beer Seeker</h1>
+  <div class="infoCol">
+    <div class="findNearBeer">Find the ten closest breweries.</div>
+    <div class="beerData"></div>
+  </div>
+  <div class="mapCol" id="map"></div>
 </div>
 
 </div>
