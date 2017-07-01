@@ -15,7 +15,6 @@ if (navigator.geolocation) {
         lng : pos.lng
       });
       $('.loader').addClass('locationFound');
-      $('.loader').remove();
       $('.display').css('visibility', 'visible');
       findNearBeer();
       var center = {'lat': pos.lat, 'lng': pos.lng};

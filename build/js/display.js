@@ -1,4 +1,5 @@
 $('.beerData').on('click', '.toggle', function() {
+  $('.loader.locationFound').remove();
   var breweryId = $(this).attr('id');
   if($('.beerData .breweryBeers#'+breweryId).length > 0) {
     $('.beerData .breweryBeers#'+breweryId).remove();
@@ -16,9 +17,10 @@ $('.beerData').on('click', '.findById', function() {
   .done(function(data) {
     $.each( data, function( key, val ) {
       if(key === 'data') {
+        console.log(val);
         var beerInfo = $('<div class="beerInfo"/>')
         .attr('id',val.id)
-        .html('<div>Info about this beer!</div>');
+        .html('<span>Info about this beer!</span>');
         $('.findById#'+val.id).after(beerInfo);
       }
     });
@@ -34,12 +36,13 @@ function makeBeerList(breweryId) {
     .attr('id', breweryId);
     if(data.data) {
       $('.breweryItem#'+breweryId).after(beerList);
-      $.each(data.data, function(key, value){
+      $.each(data.data, function(key, value) {
         var beerInfo = $('<div/>')
         .attr('id', data.data[key].id)
         .addClass('findById')
         .append('<span class="displayName">'+data.data[key].nameDisplay+'</span>')
-        .append('<span class="abv">'+data.data[key].abv+'</span>');
+        .append('<span class="abv"><span class="bold">ABV:&nbsp;</span>'+data.data[key].abv+'</span>')
+        .append('<span class="cta">About...</span>');
         beerList.append(beerInfo);
       });
     } else {
