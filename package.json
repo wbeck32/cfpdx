@@ -4,7 +4,6 @@
   "description": "CodeFellowsPDX 401 application test",
   "main": "index.js",
   "dependencies": {
-    "ejs": "^2.5.6",
     "express": "^4.15.3",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.4.2",
@@ -18,7 +17,6 @@
     "http": "0.0.0",
     "https": "^1.0.0",
     "jshint": "^2.9.5",
-    "method-override": "^2.3.9",
     "node-fetch": "^1.7.1"
   },
   "devDependencies": {},

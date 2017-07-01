@@ -7,32 +7,32 @@
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-<div class="wrapper">
+  <div class="wrapper">
+    <div class="loader">
+      <h1>Beer Seeker</h1>
+      <p><img src="../images/beer.png"><img src="../images/beer.png"><img src="../images/beer.png"></p>
+      <p>Please wait while I find you the ten closest breweries.</p>
+      <p><img src="../images/beer.png"><img src="../images/beer.png"><img src="../images/beer.png"></p>
+    </div>
 
-  <div class="loader">
-    <h1>Beer Seeker</h1>
-    <p><img src="../images/beer.png"><img src="../images/beer.png"><img src="../images/beer.png"></p>
-    <p>Please wait while I find you the ten closest breweries.</p>
-    <p><img src="../images/beer.png"><img src="../images/beer.png"><img src="../images/beer.png"></p>
+    <div class="display" style="visibility:hidden">
+      <h1>Beer Seeker</h1>
+      <div class="infoCol">
+        <div class="beerData"></div>
+      </div>
+        <div class="mapCol" id="map"></div>
+    </div>
   </div>
 
-<div class="display" style="visibility:hidden">
-    <h1>Beer Seeker</h1>
-  <div class="infoCol">
-    <div class="beerData"></div>
-  </div>
-  <div class="mapCol" id="map"></div>
-</div>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 
-</div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk&callback=findMe">
+  </script>
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk&callback=findMe">
-        </script>
-        <script type="text/javascript" src="js/main.js"></script>
-    </body>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
 </html>
