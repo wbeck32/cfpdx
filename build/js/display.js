@@ -1,4 +1,4 @@
-$('.findNearBeer').click(function(){
+function findNearBeer() {
   var lat = $('div.wrapper').attr('lat');
   var lng = $('div.wrapper').attr('lng');
   $.getJSON( "/findNearBeer/"+lat+"/"+lng, function( data ) {
@@ -19,12 +19,22 @@ $('.findNearBeer').click(function(){
               .append('<div class="breweryAddress">'+val[m].streetAddress+'</div>')
               .append('<div class="breweryPhone">'+val[m].phone+'</div>')
               .appendTo('.beerData');
+              $('.breweryItem#'+val[m].brewery.id).before('<div class="toggle" id="'+val[m].brewery.id+'">Show/hide beers</div>');
           }
         }
     });
   });
-});
+}
 
+$('.beerData').on('click', '.toggle', function(){ 
+  var breweryId = $(this).attr('id');
+  if($('.beerData .breweryBeers#'+breweryId).length > 0) {
+    $('.beerData .breweryBeers#'+breweryId).remove();
+  } else {
+    $('.breweryBeers').not('.breweryBeers#'+breweryId).remove();
+    makeBeerList(breweryId);
+  }
+});
 
 $('.beerData').on('click', '.findById', function(){
   var beerId = $(this).attr('id');
@@ -41,9 +51,9 @@ $('.beerData').on('click', '.findById', function(){
   });
 });
 
-$('.beerData').on('click', '.breweryItem', function(){
-  var breweryId = $(this).attr('id');
-  $('.breweryBeers').not('.breweryBeers#'+breweryId).remove();
+// $('.beerData').on('click', '.breweryItem', function(){
+//   var breweryId = $(this).attr('id');
+//   $('.breweryBeers').not('.breweryBeers#'+breweryId).remove();
     // TODO: drop a marker for the brewery location, provide direction service
     // var lat = $('div.wrapper').attr('lat');
     // var lng = $('div.wrapper').attr('lng');
@@ -52,13 +62,15 @@ $('.beerData').on('click', '.breweryItem', function(){
     //   position: location,
     //   map: map
     // });
+  // });
+function makeBeerList(breweryId) {
     $.getJSON( "/brewery/"+breweryId+"/beers", function(data) {
       // console.log('success');
       })
       .done(function(data) {
-      if(data.data) {
         var beerList = $("<div class='breweryBeers'></div>")
             .attr('id', breweryId);
+      if(data.data) {
             $('.breweryItem#'+breweryId).after(beerList);
         $.each(data.data, function(key, value){
           var beerInfo = $('<div/>')
@@ -69,10 +81,8 @@ $('.beerData').on('click', '.breweryItem', function(){
               beerList.append(beerInfo);
           });
         } else {
-          $('<div class="breweryBeers"></div>')
-              .html('<div>Sorry, no beer data available for this brewery.</div>')
-              .appendTo('div#'+breweryId);
+            $('.breweryItem#'+breweryId).after(beerList);
+            beerList.append('<div>Sorry, no beer data available for this brewery.</div>');
         }
-
     });
-    });
+}

@@ -17,6 +17,7 @@ function findMe() {
               $('.loader').addClass('locationFound');
               $('.loader').remove();
               $('.display').css('visibility', 'visible');
+              findNearBeer();
               var center = {'lat': pos.lat, 'lng': pos.lng};
                map = new google.maps.Map(document.getElementById('map'), {
                   center: center,
