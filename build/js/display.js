@@ -15,17 +15,94 @@ $('.beerData').on('click', '.findById', function() {
   $.getJSON( "/beer/"+beerId, function(data) {
   })
   .done(function(data) {
+    var beerInfoObj = {};
     $.each( data, function( key, val ) {
-      if(key === 'data') {
-        console.log(val);
-        var beerInfo = $('<div class="beerInfo"/>')
-        .attr('id',val.id)
-        .html('<span>Info about this beer!</span>');
-        $('.findById#'+val.id).after(beerInfo);
-      }
+
+          try  {
+            beerInfoObj.icon = {
+              'attr' : '<img class="labelImage" src="'+val.labels.medium+'"</img>',
+              'text' : ''
+            };
+          } catch(e) {
+            beerInfoObj.icon = {
+              'attr' : '<img class="labelImage" src="../images/beer.png"</img>',
+              'text' : ''
+            };
+          }
+
+          try  {
+            beerInfoObj.nameDisplay = {
+              'attr' : val.nameDisplay,
+              'text' : 'Name: '
+            };
+          } catch(e) {
+          }
+
+          try  {
+            beerInfoObj.abv = {
+              'attr' : val.abv,
+              'text' : 'ABV: '
+            };
+          } catch(e) {
+              beerInfoObj.abv = {
+                'attr' : 'N/A',
+                'text' : 'ABV: '
+              };
+          }
+
+          try  {
+            beerInfoObj.ibu = {
+              'attr' : val.style.ibuMax,
+              'text' : 'IBU: '
+            };
+          } catch(e) {
+          }
+
+          try  {
+            beerInfoObj.category = {
+              'attr' : val.style.category.name,
+              'text' : 'Category: '
+            };
+          } catch(e) {
+          }
+
+          try  {
+            beerInfoObj.isOrganic = {
+              'attr' : val.isOrganic,
+              'text' : 'Organic: '
+            };
+          } catch(e) {
+          }
+
+          try  {
+            beerInfoObj.description = {
+              'attr' : val.available.description,
+              'text' : 'Description: '
+            };
+          } catch(e) {
+          }
+
+          try  {
+            beerInfoObj.glassType = {
+              'attr' : val.glass.name,
+              'text' : 'Glass: '
+            };
+          } catch(e) {
+          }
+
+          var beerInfo = $('<div class="beerInfo"/>')
+          .attr('id', val.id);
+          for (var k in beerInfoObj) {
+              $('<div>')
+                  .html('<span class="attValue">'+beerInfoObj[k].text+'</span>')
+                  .append('<span class="attribute">'+beerInfoObj[k].attr+'</span>')
+                  .appendTo(beerInfo);
+          }
+          $('.findById#'+val.id).after(beerInfo);
+        });
     });
   });
-});
+
 
 function makeBeerList(breweryId) {
   $.getJSON( "/brewery/"+breweryId+"/beers", function(data) {

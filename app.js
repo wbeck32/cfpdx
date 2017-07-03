@@ -54,7 +54,6 @@ app.get('/findNearBeer/:lat/:lng', function (req, res) {
   var lat = req.params.lat;
   var lng = req.params.lng;
   var URL = homeURL + 'search/geo/point/?lat='+lat+'&lng='+lng+'&format=json&key='+bdbKey;
-  console.log(URL);
   fetch(URL)
     .then((resp) => resp.json())
     .then(function(resp) {

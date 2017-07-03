@@ -1,3 +1,5 @@
+$accent-color: #009900;
+
 html {
   font-size: 100%;
   font-family: 'Lato', sans-serif;
@@ -30,7 +32,7 @@ html {
   .wrapper {
 
   .loader {
-    background-color: pink;
+    background-color: $accent-color;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -58,7 +60,9 @@ html {
       font-size: 5rem;
       margin: 15px 0;
       font-family: 'Playball', cursive;
-
+        p {
+          border: 1px solid red;
+      }
     }
 
     &.locationFound {
@@ -91,15 +95,15 @@ html {
     }
   }
     .display {
-    width: 100%;
-    float: none;
-    margin: 0 auto;
+      width: 100%;
+      float: none;
+      margin: 0 auto;
 
       .mapCol {
         width: 36vw;
         height: 36vh;
         float: right;
-        margin: 18px -1000px 0 0;
+        margin: 10px -1000px 0 0;
         @-webkit-keyframes slideInRight {
           0%   { margin-right: -1000px; }
           100% { margin-right: 10px; }
@@ -127,38 +131,47 @@ html {
             position: fixed;
             top: 0;
             right: 0;
+            border: 1px solid black;
+            margin-top: 20px;
+            div div.gm-style {
+              img {
+                background-color: #fff;
+              }
+            }
           }
       }
       .infoCol {
-      float: left;
-      width: 58vw;
-      margin-left: -1000px;
-      @-webkit-keyframes slideInLeft {
-        0%   { margin-left: -1000px; }
-        100% { margin-right: 10px; }
-      }
-      @-moz-keyframes slideInLeft {
-        0%   { margin-left: -1000px; }
-        100% { margin-left: 10px; }
-      }
-      @-o-keyframes slideInLeft {
-        0%   { margin-left: -1000px; }
-        100% { margin-left: 10px; }
-      }
-      @keyframes slideInLeft {
-        0%   { margin-left: -1000px; }
-        100% { margin-left: 10px; }
-      }
-      -webkit-animation: slideInLeft 2s 4s forwards;
-      -moz-animation:   slideInLeft 2s 4s forwards; /* Fx 5+ */
-      -o-animation:     slideInLeft 2s 4s forwards; /* Opera 12+ */
-      animation:        slideInLeft 2s 4s forwards; /* IE 10+, Fx 29+ */
+        float: left;
+        width: 58vw;
+        margin-left: -1000px;
+          @-webkit-keyframes slideInLeft {
+            0%   { margin-left: -1000px; }
+            100% { margin-right: 10px; }
+          }
+          @-moz-keyframes slideInLeft {
+            0%   { margin-left: -1000px; }
+            100% { margin-left: 10px; }
+          }
+          @-o-keyframes slideInLeft {
+            0%   { margin-left: -1000px; }
+            100% { margin-left: 10px; }
+          }
+          @keyframes slideInLeft {
+            0%   { margin-left: -1000px; }
+            100% { margin-left: 10px; }
+          }
+          -webkit-animation: slideInLeft 2s 4s forwards;
+          -moz-animation:   slideInLeft 2s 4s forwards; /* Fx 5+ */
+          -o-animation:     slideInLeft 2s 4s forwards; /* Opera 12+ */
+          animation:        slideInLeft 2s 4s forwards; /* IE 10+, Fx 29+ */
 
         .beerData {
           .toggle {
             position: relative;
             top: 5vh;
             left: 40vw;
+            width: 16vw;
+            color: $accent-color;
           }
 
           .breweryItem {
@@ -169,44 +182,45 @@ html {
               span.icon img {
                 max-width: 40px;
                 max-height: 40px;
-                // vertical-align: middle;
-                margin: 10px;
+                margin: 4px;
                 float: left;
               }
 
             .breweryName {
-
+              font-size: 1rem;
             }
             .breweryAddress {
-
+              font-size: .75rem;
             }
             .breweryPhone {
-
+              font-size: .75rem;
             }
           }
         }
         .breweryBeers {
-          margin: 0 0 20px 2vw;
+          margin: 0 0 20px 1.5vw;
 
           .findById {
-            margin-top: 24px;
+            margin-top: 16px;
             border-top: 1px solid #000;
             padding: 4px;
+            display: block;
 
             span.displayName {
-              margin-right: 10px;
-              width: 58%;
+              margin-right: 6px;
+              width: 62%;
               float: left;
               display: inline;
               overflow-wrap: break-word;
+              font-size: .75rem;
             }
             span.abv {
-              width: 24%;
+              width: 12%;
               font-size: .75rem;
               margin-right: 10px;
-              padding-top: 4px;
               float: left;
               display: inline;
+
               .bold {
                 font-weight: bolder;
               }
@@ -217,14 +231,29 @@ html {
               margin-right: 0;
               float: right;
               display: inline;
+              font-size: .75rem;
+              color: $accent-color;
             }
           }
         }
         .beerInfo {
-          margin: 4px 0 4px 10vw;
-          border: 1px solid red;
+          margin: 25px 0 0 5vw;
+          .attValue {
+            font-weight: bolder;
+            margin-right: 5px;
+          }
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html .wrapper .display .infoCol .beerData .toggle {
+    left: 32vw;
+    width: 24vw;
+  }
+  html .wrapper .display .infoCol .beerData .breweryItem .breweryName {
+    font-size: .8rem;
   }
 }

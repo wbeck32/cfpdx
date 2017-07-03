@@ -20,11 +20,25 @@ if (navigator.geolocation) {
       var center = {'lat': pos.lat, 'lng': pos.lng};
       map = new google.maps.Map(document.getElementById('map'), {
         center: center,
-        zoom: 15
+        zoom: 15,
       });
       infowindow = new google.maps.InfoWindow({
           content: 'You are here.',
           position: center
+        });
+
+        var locateMe = document.createElement('img');
+        locateMe.src = "images/locationIcon.svg";
+        locateMe.style.cursor = "pointer";
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(locateMe);
+
+        google.maps.event.addDomListener(locateMe, 'click', function(){
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+          	function locationAllowed(position) {
+              map.panTo({lat: position.coords.latitude, lng: position.coords.longitude});
+          	});
+          }
         });
       infowindow.open(map);
     })
