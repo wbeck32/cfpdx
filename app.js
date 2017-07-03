@@ -16,11 +16,13 @@ var port = process.env.PORT || 8080;
 // parse application/json
 app.use(bodyParser.json());
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
-app.set('views', __dirname + '/public/views');
 
-var homeURL = 'http://api.brewerydb.com/v2/';
+var homeURL = 'https://api.brewerydb.com/v2/';
 // routes ==================================================
 app.get('/brewery/:breweryId', function (req, res) {
   var breweryId = req.params.breweryId;
@@ -52,6 +54,7 @@ app.get('/findNearBeer/:lat/:lng', function (req, res) {
   var lat = req.params.lat;
   var lng = req.params.lng;
   var URL = homeURL + 'search/geo/point/?lat='+lat+'&lng='+lng+'&format=json&key='+bdbKey;
+  console.log(URL);
   fetch(URL)
     .then((resp) => resp.json())
     .then(function(resp) {

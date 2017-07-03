@@ -55,10 +55,10 @@ function makeBeerList(breweryId) {
 function findNearBeer() {
   var lat = $('div.wrapper').attr('lat');
   var lng = $('div.wrapper').attr('lng');
-  $.getJSON( "/findNearBeer/"+lat+"/"+lng, function(data) {
+    $.getJSON( "/findNearBeer/"+lat+"/"+lng, function(data) {
     // console.log('success');
-  })
-  .done(function(data) {
+    })
+      .done(function(data){
     $.each( data, function(key, val) {
         if(key === 'data') {
           var icon;
