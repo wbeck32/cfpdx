@@ -6,7 +6,6 @@ var http = require('http');
 var https = require('https');
 var apiKey = require('./data/keys.js');
 var bdbKey = apiKey.bdbKey;
-var googleKey = apiKey.googleKey;
 var fetch = require('node-fetch');
 
 // configuration ===========================================
