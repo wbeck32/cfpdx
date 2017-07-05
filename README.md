@@ -11,6 +11,7 @@ I built the site using:
 * Javascript
 * jQuery
 * Node.js
+* npm
 * SCSS
 * Express for routing
 * nginx as a reverse proxy
