@@ -11,6 +11,7 @@
 * Use BreweryDB service hooks to automate updating data
 * Make a crontab to automatically renew the SSL cert since it expires every 90 days.
 * Get gulp autoprefixers to work
+* Figure out package-lock.json - do I need one?
 
 ### github
 [Beer Seeker 2.0 github branch](https://github.com/wbeck32/cfpdx/tree/beerseeker2.0)
