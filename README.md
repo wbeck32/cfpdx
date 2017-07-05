@@ -12,6 +12,7 @@
 * Make a crontab to automatically renew the SSL cert since it expires every 90 days.
 * Get gulp autoprefixers to work
 * Figure out package-lock.json - do I need one?
+* Don't upload build files to the server - maybe run a script on git pull that automatically runs gulp once
 
 ### github
 [Beer Seeker 2.0 github branch](https://github.com/wbeck32/cfpdx/tree/beerseeker2.0)
