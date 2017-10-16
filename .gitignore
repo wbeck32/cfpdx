@@ -2,3 +2,4 @@ node_modules
 data
 .well-known/*
 public/images/3-pint-beer-png-*
+deploy.sh

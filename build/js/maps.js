@@ -7,7 +7,7 @@ if (navigator.geolocation) {
     lat: position.coords.latitude,
     lng: position.coords.longitude
   };
-  fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk')
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.lat},${pos.lng}&key=AIzaSyDK--2y9KY9N_bTw1WY1qSB0ub_4kuCbmk`)
     .then(function(response) { return response.json(); })
     .then(function(data) {
       $('.wrapper').attr({
