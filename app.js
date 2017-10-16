@@ -10,7 +10,7 @@ var fetch = require('node-fetch');
 
 // configuration ===========================================
 // set our port
-var port = process.env.PORT || 8080;
+var port = 8080;
 
 // parse application/json
 app.use(bodyParser.json());
